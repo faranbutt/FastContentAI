@@ -1,0 +1,2 @@
+# FastContentAI
+Content Generation Specialist
