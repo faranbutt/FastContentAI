@@ -88,3 +88,18 @@ curl "http://localhost:3000/api/articles?website_id=testsite"
 curl http://localhost:3000/api/article/<article_id>
 
 ```
+
+## ⚛️ React Example
+```js
+import axios from 'axios';
+
+const fetchArticles = async (websiteId) => {
+  try {
+    const response = await axios.get(`https://your-api-domain.com/api/articles?website_id=${websiteId}`);
+    return response.data.articles;
+  } catch (error) {
+    console.error("Error fetching articles:", error);
+    return [];
+  }
+};
+```
