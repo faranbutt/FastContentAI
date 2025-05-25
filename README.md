@@ -43,15 +43,48 @@ GROK_API_KEY="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"
 PAPA="llama"
 # ----------------------------------------------
 
+# Start MongoDB
+brew services start mongodb-community@8.0
+
+# Start Redis
+brew services start redis
+
+# Check Redis is running
+redis-cli ping
+# Should reply: PONG
+
 # Run the Flask app
 python app.py
 
-# Run Celery worker
+# Run Celery worker (in a new terminal)
 celery -A tasks.celery_app worker --loglevel=info
 
 # Run unit tests
 python -m unittest discover tests
 
-# Create empty log file
+# Create empty log file (optional)
 mkdir -p logs
 touch logs/app.log
+```
+
+
+## 📡  API Usage 
+```bash
+
+## Register a website
+curl -X POST http://localhost:3000/api/webhook/register \
+  -H "Content-Type: application/json" \
+  -d '{"website_id": "testsite", "domain": "example.com"}'
+
+## Generate an article for the website:
+
+curl http://localhost:3000/api/test_generate/testsite
+
+## List articles for the website:
+ 
+curl "http://localhost:3000/api/articles?website_id=testsite"
+
+## Retrieve a specific article by ID:
+curl http://localhost:3000/api/article/<article_id>
+
+```
