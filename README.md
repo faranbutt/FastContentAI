@@ -39,7 +39,7 @@ FLASK_HOST="0.0.0.0"
 FLASK_PORT=3000
 LLM_TYPE="llama"
 OPENAI_API_KEY="your_openai_api_key_here"
-GROK_API_KEY="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"
+GROK_API_KEY="gsk_##########################################"
 PAPA="llama"
 # ----------------------------------------------
 
